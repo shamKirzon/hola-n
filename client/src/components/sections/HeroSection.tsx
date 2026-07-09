@@ -32,8 +32,8 @@ const HeroSection = ({ onAdd }: HeroSectionProps) => {
         <circle cx={98} cy={52} r={4} fill="currentColor"></circle>
       </svg>
 
-      <div className="relative z-2 grid grid-cols-1 items-center gap-8 lg:grid-cols-[56px_1fr_0.9fr] lg:gap-0">
-        <div className="flex flex-row items-center justify-start gap-4.5 lg:flex-col lg:justify-center">
+      <div className="relative z-2 grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-[56px_1fr_0.9fr] lg:items-center lg:gap-0">
+        <div className="hidden items-center gap-4.5 sm:flex sm:flex-row sm:justify-start lg:flex-col lg:justify-center">
           <div className="hidden h-30 w-px bg-holan-line lg:block"></div>
           <div className="rotate-0 text-[11px] uppercase tracking-[0.32em] text-holan-rail [writing-mode:horizontal-tb] lg:rotate-180 lg:[writing-mode:vertical-rl]">
             Hand-poured · Hola Nayan
@@ -50,7 +50,7 @@ const HeroSection = ({ onAdd }: HeroSectionProps) => {
         </div>
 
         <div className="px-0 lg:px-7">
-          <div className="mb-3.5 text-[12px] uppercase tracking-[0.3em] text-holan-hero-eyebrow sm:text-[13px]">
+          <div className="hidden mb-3.5 text-[12px] uppercase tracking-[0.3em] text-holan-hero-eyebrow sm:block sm:text-[13px]">
             Hand-poured eau de parfum
           </div>
           <h1 className="m-0 font-holan-serif text-[40px] font-bold leading-[0.95] tracking-[-0.01em] text-holan-hero-title sm:text-[52px] lg:text-[70px]">
@@ -82,20 +82,20 @@ const HeroSection = ({ onAdd }: HeroSectionProps) => {
               Single size · 1.7 fl.oz
             </span>
           </div>
-          <div className="flex flex-wrap items-center gap-6.5">
+          <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6.5">
             <a
               href={fbUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={onAdd}
-              className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#d49aa3,#bf7e8a)] px-5 py-2.75 text-[13px] font-semibold uppercase tracking-[0.04em] text-white shadow-[0_10px_22px_rgba(120,80,85,0.28)] transition hover:opacity-90"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#d49aa3,#bf7e8a)] px-5 py-3 text-[13px] font-semibold uppercase tracking-[0.04em] text-white shadow-[0_10px_22px_rgba(120,80,85,0.28)] transition hover:opacity-90 sm:w-auto sm:py-2.75"
             >
               <FacebookIcon size={16} />
               Message to order
             </a>
             <a
               href="#collection"
-              className="border-b-[1.5px] border-holan-rose pb-1 text-[12px] font-semibold uppercase tracking-widest text-holan-ink"
+              className="flex w-full items-center justify-center border-b-[1.5px] border-holan-rose pb-2 text-[12px] font-semibold uppercase tracking-widest text-holan-ink sm:w-auto sm:pb-1"
             >
               Explore the collection
             </a>
