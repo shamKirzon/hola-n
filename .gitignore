@@ -1,0 +1,5 @@
+# Local Claude Code / agent skill folders (installed per-machine, not shared)
+.claude/
+.agents/
+
+skillls-lock.json

@@ -2,8 +2,6 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import HolaLandingPage from "./pages/HolaLandingPage";
 
 const App = () => {
-  const examplePort = import.meta.env.VITE_PORT;
-
   return (
     <>
       <Routes>
