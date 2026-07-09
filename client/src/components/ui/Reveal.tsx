@@ -21,7 +21,7 @@ const Reveal = ({ children, delay = 0, className }: RevealProps) => {
       className={className}
       initial={reduce ? false : { opacity: 0, y: 28 }}
       whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.05 }}
       transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
