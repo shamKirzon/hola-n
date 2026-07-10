@@ -1,12 +1,18 @@
-import { Plus } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { products } from "@/data/holaN";
-import bottleImg from "@/assets/hola-bottle.png";
+import ProductCard from "@/components/ui/ProductCard";
 
 interface CollectionSectionProps {
   onAdd: () => void;
 }
 
+/** Number of perfumes shown as a preview before "View Full Collection". */
+const PREVIEW_COUNT = 8;
+
 const CollectionSection = ({ onAdd }: CollectionSectionProps) => {
+  const preview = products.slice(0, PREVIEW_COUNT);
+
   return (
     <section id="collection" className="pb-5 pt-14">
       <div className="mb-11 flex flex-wrap items-end justify-between gap-4">
@@ -21,42 +27,26 @@ const CollectionSection = ({ onAdd }: CollectionSectionProps) => {
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6.5 lg:grid-cols-4">
-        {products.map((item) => (
-          <div
-            key={item.slug}
-            className="flex flex-col rounded-2xl border border-holan-line bg-[rgba(255,255,255,0.5)] px-3.5 pb-4 pt-3.5"
-          >
-            <div className="relative mb-3.5 h-49 overflow-hidden rounded-[12px]">
-              <img
-                src={bottleImg}
-                alt={item.name}
-                className="h-full w-full object-contain"
-              />
-            </div>
-            <h3 className="mb-0.5 font-holan-serif text-[20px] font-semibold text-holan-ink">
-              {item.name}
-            </h3>
-            <div className="mb-2 text-[11px] uppercase tracking-[0.14em] text-holan-ink-faint">
-              {item.family} · 50ml
-            </div>
-            <p className="mb-3.5 flex-1 text-[12.5px] leading-normal text-holan-ink-soft">
-              {item.notes}
-            </p>
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] uppercase tracking-[0.12em] text-holan-ink-faint">
-                Eau de Parfum
-              </span>
-              <button
-                type="button"
-                title="Add"
-                onClick={onAdd}
-                className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-[linear-gradient(135deg,#d49aa3,#bf7e8a)] text-white shadow-[0_8px_16px_rgba(120,80,85,0.28)]"
-              >
-                <Plus size={16} strokeWidth={2} />
-              </button>
-            </div>
-          </div>
+        {preview.map((item) => (
+          <ProductCard key={item.slug} product={item} onAdd={onAdd} />
         ))}
+      </div>
+
+      <div className="mt-11 flex flex-col items-center gap-3">
+        <Link
+          to="/collection"
+          className="group inline-flex h-12 cursor-pointer items-center gap-2.5 rounded-full bg-[linear-gradient(135deg,#d49aa3,#bf7e8a)] px-7 text-[12px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_10px_20px_rgba(120,80,85,0.28)] transition-transform hover:-translate-y-0.5"
+        >
+          View Full Collection
+          <ArrowRight
+            size={16}
+            strokeWidth={2}
+            className="transition-transform group-hover:translate-x-0.5"
+          />
+        </Link>
+        <span className="text-[12px] uppercase tracking-[0.14em] text-holan-ink-faint">
+          {products.length} fragrances in total
+        </span>
       </div>
     </section>
   );
