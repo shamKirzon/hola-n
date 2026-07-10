@@ -37,15 +37,13 @@ const ContactSection = () => {
             <div className="mb-1 text-[12px] uppercase tracking-[0.14em] text-holan-ink-faint">
               Phone
             </div>
-            <div className="text-[16px] text-holan-ink">+63 900 000 0000</div>
+            <div className="text-[16px] text-holan-ink">+971582778533</div>
           </div>
           <div className="border-l-2 border-holan-rose pl-4">
             <div className="mb-1 text-[12px] uppercase tracking-[0.14em] text-holan-ink-faint">
               Pick-up address
             </div>
             <div className="text-[16px] leading-[1.4] text-holan-ink">
-              123 Magandang Binibini Street,
-              <br />
               Dubai, United Arab Emirates
             </div>
           </div>

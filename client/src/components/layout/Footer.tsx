@@ -57,7 +57,7 @@ const Footer = () => {
               >
                 Hola Nayan
               </a>
-              <span>+63 900 000 0000</span>
+              <span>+971582778533</span>
               <span>Dubai, United Arab Emirates</span>
             </div>
           </div>
