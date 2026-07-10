@@ -66,8 +66,8 @@ const HeroSection = ({ onAdd }: HeroSectionProps) => {
           </div>
           <p className="mb-7.5 max-w-100 text-[16px] leading-[1.65] text-holan-ink-soft">
             Soft, long-lasting fragrance poured by hand and finished with our
-            signature label — the scents you love, made to stay with you all
-            day.
+            signature label — featuring our customers' favorite perfumes,
+            made to stay with you all day.
           </p>
           <div className="mb-7.5 flex items-center gap-3.5">
             <SprayCan
