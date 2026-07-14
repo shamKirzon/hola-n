@@ -1,9 +1,5 @@
 import type { Product } from "@/types/product";
 
-/**
- * The scent-family filters shown on the Full Collection page. "All" is the
- * default and is not a real bucket — every product maps to one of the other six.
- */
 export const scentCategories = [
   "All",
   "Floral",
@@ -17,14 +13,7 @@ export const scentCategories = [
 export type ScentCategory = (typeof scentCategories)[number];
 export type ScentBucket = Exclude<ScentCategory, "All">;
 
-/**
- * Best-effort classifier: the catalog stores granular families ("Oriental
- * Amber", "Fresh Spicy Woody"...), so we fold each one into a single filter
- * bucket. Rules are checked in priority order — the first match wins — so that
- * dominant notes (a pure musk, an amber, an oud) win over incidental ones.
- */
 const rules: Array<{ bucket: ScentBucket; keywords: string[] }> = [
-  // Pure musks only — anything also floral/woody/amber falls through to those.
   { bucket: "Musk", keywords: ["musk"] },
   { bucket: "Oriental & Amber", keywords: ["oriental", "amber"] },
   {
@@ -85,7 +74,6 @@ const rules: Array<{ bucket: ScentBucket; keywords: string[] }> = [
 export function classifyFamily(family: string): ScentBucket {
   const f = family.toLowerCase();
 
-  // The pure-musk rule is special: only match when musk is the whole story.
   if (
     f.includes("musk") &&
     !/floral|flower|rose|oud|wood|amber|oriental|gourmand|fruit/.test(f)
@@ -98,7 +86,6 @@ export function classifyFamily(family: string): ScentBucket {
     if (keywords.some((k) => f.includes(k))) return bucket;
   }
 
-  // Fallback for the rare family that matches nothing above.
   return "Fresh & Citrus";
 }
 

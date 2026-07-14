@@ -3,16 +3,10 @@ import { motion, useReducedMotion } from "motion/react";
 
 interface RevealProps {
   children: ReactNode;
-  /** Stagger offset in seconds for sequenced reveals. */
   delay?: number;
   className?: string;
 }
 
-/**
- * Fade-and-rise on scroll into view. Motivated: storytelling — sections
- * arrive in sequence as the user scrolls. Honors prefers-reduced-motion
- * (renders static, no transform) per the motion accessibility guardrail.
- */
 const Reveal = ({ children, delay = 0, className }: RevealProps) => {
   const reduce = useReducedMotion();
 
