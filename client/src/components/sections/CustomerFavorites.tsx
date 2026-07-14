@@ -1,7 +1,7 @@
 import { Plus } from "lucide-react";
 import { favorites } from "@/data/holaN";
 import { useCartStore } from "@/store/cartStore";
-import bottleImg from "@/assets/hola-bottle.png";
+import { getProductImage } from "@/lib/productImages";
 
 const CustomerFavorites = () => {
   const addItem = useCartStore((state) => state.addItem);
@@ -22,7 +22,7 @@ const CustomerFavorites = () => {
         <div className="relative grid grid-cols-1 items-center gap-6 rounded-[24px] border border-holan-line bg-[rgba(255,255,255,0.55)] px-7 py-6 sm:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <div className="relative aspect-3/4 mx-auto w-full max-w-50 sm:mx-0 sm:max-w-none">
             <img
-              src={bottleImg}
+              src={getProductImage(feat.image)}
               alt={feat.name}
               className="h-full w-full object-contain drop-shadow-[0_22px_26px_rgba(120,80,85,0.2)]"
             />
@@ -60,7 +60,7 @@ const CustomerFavorites = () => {
             >
               <div className="relative h-32 w-24 flex-none">
                 <img
-                  src={bottleImg}
+                  src={getProductImage(item.image)}
                   alt={item.name}
                   className="h-full w-full object-contain drop-shadow-[0_14px_18px_rgba(120,80,85,0.16)]"
                 />

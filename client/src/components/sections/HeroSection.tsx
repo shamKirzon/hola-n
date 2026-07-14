@@ -1,6 +1,6 @@
 import { SprayCan } from "lucide-react";
 import { fbUrl } from "@/data/holaN";
-import bottleImg from "@/assets/hola-bottle.png";
+import bottleImg from "@/assets/images/hola-bottle.png";
 import FacebookIcon from "@/components/ui/FacebookIcon";
 
 const HeroSection = () => {

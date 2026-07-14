@@ -74,7 +74,7 @@ const CatalogBrowser = () => {
               type="button"
               onClick={() => handleCategory(cat)}
               aria-pressed={active}
-              className={`cursor-pointer rounded-full border px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.1em] transition-colors sm:px-5 sm:py-2.5 sm:text-[13px] ${
+              className={`cursor-pointer rounded-full border px-4 py-2 text-[12px] font-semibold uppercase tracking-widest transition-colors sm:px-5 sm:py-2.5 sm:text-[13px] ${
                 active
                   ? "border-transparent bg-[linear-gradient(135deg,#d49aa3,#bf7e8a)] text-white shadow-[0_8px_16px_rgba(120,80,85,0.24)]"
                   : "border-holan-rose/50 text-holan-rose-deep hover:bg-[rgba(255,255,255,0.5)]"

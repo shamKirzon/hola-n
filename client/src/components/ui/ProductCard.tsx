@@ -1,7 +1,7 @@
 import { Plus } from "lucide-react";
 import type { Product } from "@/types/product";
 import { useCartStore } from "@/store/cartStore";
-import bottleImg from "@/assets/hola-bottle.png";
+import { getProductImage } from "@/lib/productImages";
 
 interface ProductCardProps {
   product: Product;
@@ -14,7 +14,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
     <div className="flex flex-col rounded-2xl border border-holan-line bg-[rgba(255,255,255,0.5)] px-3.5 pb-4 pt-3.5">
       <div className="relative mb-3.5 h-49 overflow-hidden rounded-[12px]">
         <img
-          src={bottleImg}
+          src={getProductImage(product.image)}
           alt={product.name}
           className="h-full w-full object-contain"
         />

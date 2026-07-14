@@ -47,7 +47,7 @@ const TestimonialsSection = () => {
         {reviews.map((r) => (
           <div
             key={r.name}
-            className="shrink-0 grow-0 basis-72 snap-start border-t border-holan-line pt-6.5 sm:basis-82.5"
+            className="flex shrink-0 grow-0 basis-full flex-col snap-start border-t border-holan-line pt-6.5 sm:basis-82.5"
           >
             <div className="h-6.5 font-holan-serif text-[56px] leading-[0.4] text-holan-rose-soft">
               &ldquo;
@@ -55,7 +55,7 @@ const TestimonialsSection = () => {
             <p className="mb-6.5 text-[15px] leading-[1.7] text-holan-ink-soft">
               {r.quote}
             </p>
-            <div className="flex items-center gap-3">
+            <div className="mt-auto flex items-center gap-3">
               <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-holan-rose-soft text-[15px] font-semibold text-holan-rose-deep">
                 {r.initial}
               </div>

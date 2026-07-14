@@ -3,6 +3,7 @@ export interface Product {
   slug: string;
   family: string;
   notes: string;
+  image: string;
 }
 
 export interface Review {

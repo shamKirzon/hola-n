@@ -3,7 +3,7 @@ import { Dialog } from "@base-ui/react/dialog";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ShoppingBag, Trash2, X } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
-import bottleImg from "@/assets/hola-bottle.png";
+import { getProductImage } from "@/lib/productImages";
 import QuantityStepper from "@/components/ui/QuantityStepper";
 import EmptyState from "@/components/ui/EmptyState";
 
@@ -52,7 +52,7 @@ const CartDrawer = () => {
                     >
                       <div className="h-18 w-18 flex-none overflow-hidden rounded-[10px] bg-[rgba(255,255,255,0.5)]">
                         <img
-                          src={bottleImg}
+                          src={getProductImage(item.product.image)}
                           alt={item.product.name}
                           className="h-full w-full object-contain"
                         />
