@@ -4,19 +4,11 @@ import { products } from "@/data/holaN";
 import { scentCategories, matchesCategory } from "@/lib/scentCategories";
 import type { ScentCategory } from "@/lib/scentCategories";
 import ProductCard from "@/components/ui/ProductCard";
-
-interface CatalogBrowserProps {
-  onAdd: () => void;
-}
+import EmptyState from "@/components/ui/EmptyState";
 
 const PAGE_SIZE = 12;
 
-/**
- * The interactive catalog: free-text search, scent-family filter pills, a
- * responsive product grid, and progressive "Load More" paging. Filtering and
- * search reset the visible page so results always start from the top.
- */
-const CatalogBrowser = ({ onAdd }: CatalogBrowserProps) => {
+const CatalogBrowser = () => {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<ScentCategory>("All");
   const [visible, setVisible] = useState(PAGE_SIZE);
@@ -55,7 +47,6 @@ const CatalogBrowser = ({ onAdd }: CatalogBrowserProps) => {
 
   return (
     <section className="pb-4">
-      {/* Search */}
       <div className="mx-auto mb-6 max-w-2xl">
         <label className="relative flex items-center">
           <Search
@@ -74,7 +65,6 @@ const CatalogBrowser = ({ onAdd }: CatalogBrowserProps) => {
         </label>
       </div>
 
-      {/* Filter pills */}
       <div className="mb-9 flex flex-wrap justify-center gap-2.5 sm:gap-3">
         {scentCategories.map((cat) => {
           const active = cat === category;
@@ -96,40 +86,26 @@ const CatalogBrowser = ({ onAdd }: CatalogBrowserProps) => {
         })}
       </div>
 
-      {/* Grid or empty state */}
       {shown.length > 0 ? (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6.5 lg:grid-cols-4">
           {shown.map((item) => (
-            <ProductCard key={item.slug} product={item} onAdd={onAdd} />
+            <ProductCard key={item.slug} product={item} />
           ))}
         </div>
       ) : (
-        <div className="flex flex-col items-center px-6 py-16 text-center">
-          <Droplet
-            size={56}
-            strokeWidth={1.5}
-            className="mb-6 text-holan-rose-deep"
-          />
-          <h3 className="mb-2 font-holan-serif text-[26px] font-semibold text-holan-ink">
-            {query.trim()
+        <EmptyState
+          icon={Droplet}
+          heading={
+            query.trim()
               ? `No perfumes found for "${query.trim()}"`
-              : "No perfumes found"}
-          </h3>
-          <p className="mb-7 max-w-sm text-[14px] leading-[1.6] text-holan-ink-soft">
-            Try a different scent family or search term, or clear your
-            filters to see the full collection.
-          </p>
-          <button
-            type="button"
-            onClick={clearFilters}
-            className="cursor-pointer rounded-full bg-[linear-gradient(135deg,#d49aa3,#bf7e8a)] px-8 py-3 text-[12px] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_10px_20px_rgba(120,80,85,0.28)] transition-transform hover:-translate-y-0.5"
-          >
-            Clear Filters
-          </button>
-        </div>
+              : "No perfumes found"
+          }
+          description="Try a different scent family or search term, or clear your filters to see the full collection."
+          ctaLabel="Clear Filters"
+          onCtaClick={clearFilters}
+        />
       )}
 
-      {/* Load more */}
       {hasMore && (
         <div className="mt-11 flex justify-center">
           <button

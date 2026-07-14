@@ -19,7 +19,8 @@ export const products: Product[] = [
     name: "Chanel No. 5",
     slug: "chanel-no-5",
     family: "Floral Aldehyde",
-    notes: "The original abstract bouquet — powdery aldehydes over jasmine and rose.",
+    notes:
+      "The original abstract bouquet — powdery aldehydes over jasmine and rose.",
   },
   {
     name: "Gris Dior",
@@ -673,7 +674,8 @@ export const products: Product[] = [
     name: "Khamrah Qahwa",
     slug: "khamrah-qahwa",
     family: "Ambery Gourmand",
-    notes: "Cinnamon, cardamom, and roasted coffee over vanilla and tonka bean.",
+    notes:
+      "Cinnamon, cardamom, and roasted coffee over vanilla and tonka bean.",
   },
   {
     name: "Guerlain Patchouli",
@@ -1187,22 +1189,25 @@ export const products: Product[] = [
   },
 ];
 
-export const favorites = [
+export const favorites: Product[] = [
   {
     name: "Baccarat Rouge",
     slug: "baccarat-rouge",
+    family: "Amber Floral",
     notes:
       "Warm saffron and sweet amber with a soft woody trail — rich, cozy, and unmistakable. Our number-one most-ordered scent.",
   },
   {
     name: "Creed Aventus",
     slug: "creed-aventus",
+    family: "Fruity Chypre",
     notes:
       "Pineapple and birch smoke wrapped in bold, timeless sophistication. A modern classic our customers keep coming back for.",
   },
   {
     name: "Bleu de Chanel",
     slug: "bleu-de-chanel",
+    family: "Woody Aromatic",
     notes:
       "Crisp citrus and incense settling into warm sandalwood — clean, confident, and endlessly versatile.",
   },

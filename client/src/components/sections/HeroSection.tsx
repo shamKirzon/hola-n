@@ -3,11 +3,7 @@ import { fbUrl } from "@/data/holaN";
 import bottleImg from "@/assets/hola-bottle.png";
 import FacebookIcon from "@/components/ui/FacebookIcon";
 
-interface HeroSectionProps {
-  onAdd: () => void;
-}
-
-const HeroSection = ({ onAdd }: HeroSectionProps) => {
+const HeroSection = () => {
   return (
     <section className="relative pb-12 pt-9">
       <svg
@@ -87,7 +83,6 @@ const HeroSection = ({ onAdd }: HeroSectionProps) => {
               href={fbUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={onAdd}
               className="flex w-full items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#d49aa3,#bf7e8a)] px-5 py-3 text-[13px] font-semibold uppercase tracking-[0.04em] text-white shadow-[0_10px_22px_rgba(120,80,85,0.28)] transition hover:opacity-90 sm:w-auto sm:py-2.75"
             >
               <FacebookIcon size={16} />

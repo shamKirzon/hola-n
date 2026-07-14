@@ -1,12 +1,10 @@
 import { Plus } from "lucide-react";
 import { favorites } from "@/data/holaN";
+import { useCartStore } from "@/store/cartStore";
 import bottleImg from "@/assets/hola-bottle.png";
 
-interface CustomerFavoritesProps {
-  onAdd: () => void;
-}
-
-const CustomerFavorites = ({ onAdd }: CustomerFavoritesProps) => {
+const CustomerFavorites = () => {
+  const addItem = useCartStore((state) => state.addItem);
   const [feat, ...rest] = favorites;
 
   return (
@@ -45,7 +43,7 @@ const CustomerFavorites = ({ onAdd }: CustomerFavoritesProps) => {
             <button
               type="button"
               title="Add"
-              onClick={onAdd}
+              onClick={() => addItem(feat)}
               className="inline-flex h-10 w-fit cursor-pointer items-center gap-2 self-start rounded-full bg-[linear-gradient(135deg,#d49aa3,#bf7e8a)] px-5.5 text-[12px] font-semibold uppercase tracking-widest text-white shadow-[0_8px_16px_rgba(120,80,85,0.26)]"
             >
               <Plus size={15} strokeWidth={2} />
@@ -84,7 +82,7 @@ const CustomerFavorites = ({ onAdd }: CustomerFavoritesProps) => {
                   <button
                     type="button"
                     title="Add"
-                    onClick={onAdd}
+                    onClick={() => addItem(item)}
                     className="flex h-8 w-8 flex-none cursor-pointer items-center justify-center rounded-full bg-[linear-gradient(135deg,#d49aa3,#bf7e8a)] text-white shadow-[0_6px_12px_rgba(120,80,85,0.24)]"
                   >
                     <Plus size={14} strokeWidth={2} />

@@ -3,14 +3,9 @@ import { ArrowRight } from "lucide-react";
 import { products } from "@/data/holaN";
 import ProductCard from "@/components/ui/ProductCard";
 
-interface CollectionSectionProps {
-  onAdd: () => void;
-}
-
-/** Number of perfumes shown as a preview before "View Full Collection". */
 const PREVIEW_COUNT = 8;
 
-const CollectionSection = ({ onAdd }: CollectionSectionProps) => {
+const CollectionSection = () => {
   const preview = products.slice(0, PREVIEW_COUNT);
 
   return (
@@ -28,7 +23,7 @@ const CollectionSection = ({ onAdd }: CollectionSectionProps) => {
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6.5 lg:grid-cols-4">
         {preview.map((item) => (
-          <ProductCard key={item.slug} product={item} onAdd={onAdd} />
+          <ProductCard key={item.slug} product={item} />
         ))}
       </div>
 

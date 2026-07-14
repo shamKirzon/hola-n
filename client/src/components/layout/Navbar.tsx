@@ -1,10 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Menu, ShoppingBag, X } from "lucide-react";
-
-interface NavbarProps {
-  cartCount: number;
-}
+import { useCartCount, useCartStore } from "@/store/cartStore";
 
 const navLinks = [
   { href: "#favorites", label: "Favorites" },
@@ -13,7 +10,10 @@ const navLinks = [
   { href: "#contact", label: "Contact" },
 ];
 
-const Navbar = ({ cartCount }: NavbarProps) => {
+const Navbar = () => {
+  const cartCount = useCartCount();
+  const toggleCart = useCartStore((state) => state.toggleCart);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
 
@@ -21,7 +21,6 @@ const Navbar = ({ cartCount }: NavbarProps) => {
   const [justAdded, setJustAdded] = useState(false);
   const prevCount = useRef(cartCount);
 
-  // Lock background scroll while the drawer is open.
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -29,7 +28,6 @@ const Navbar = ({ cartCount }: NavbarProps) => {
     };
   }, [menuOpen]);
 
-  // Flash a "new item" notification on the cart whenever the count grows.
   useEffect(() => {
     if (cartCount > prevCount.current) {
       setJustAdded(true);
@@ -62,11 +60,14 @@ const Navbar = ({ cartCount }: NavbarProps) => {
             ))}
           </div>
 
-          <a
-            href="#collection"
-            onClick={closeMenu}
+          <button
+            type="button"
+            onClick={() => {
+              closeMenu();
+              toggleCart();
+            }}
             aria-label={`Cart, ${cartCount} item${cartCount === 1 ? "" : "s"}`}
-            className="flex items-center gap-2 text-holan-rose-deep"
+            className="flex cursor-pointer items-center gap-2 text-holan-rose-deep"
           >
             <span className="relative inline-flex">
               <motion.span
@@ -79,7 +80,6 @@ const Navbar = ({ cartCount }: NavbarProps) => {
                 <ShoppingBag size={19} strokeWidth={1.7} />
               </motion.span>
 
-              {/* "New item added" notification dot */}
               <AnimatePresence>
                 {justAdded && (
                   <motion.span
@@ -114,7 +114,7 @@ const Navbar = ({ cartCount }: NavbarProps) => {
                 </motion.span>
               </AnimatePresence>
             </span>
-          </a>
+          </button>
 
           <button
             type="button"
@@ -129,7 +129,6 @@ const Navbar = ({ cartCount }: NavbarProps) => {
       </nav>
       </header>
 
-      {/* Backdrop */}
       <div
         aria-hidden="true"
         onClick={closeMenu}
@@ -138,7 +137,6 @@ const Navbar = ({ cartCount }: NavbarProps) => {
         }`}
       />
 
-      {/* Left slide-in drawer */}
       <aside
         aria-hidden={!menuOpen}
         className={`fixed left-0 top-0 z-50 flex h-full w-72 max-w-[80vw] flex-col bg-[#f3e6e2] shadow-[6px_0_28px_rgba(120,80,85,0.2)] transition-transform duration-300 ease-out lg:hidden ${

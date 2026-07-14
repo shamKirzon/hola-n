@@ -2,17 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowLeft, ShoppingBag } from "lucide-react";
+import { useCartCount, useCartStore } from "@/store/cartStore";
 
-interface CatalogHeaderProps {
-  cartCount: number;
-}
-
-/**
- * Slim sticky header for the Full Collection page: wordmark on the left, a
- * compact cart indicator and a "Back to Home" link on the right. Mirrors the
- * landing Navbar's cart-ping feedback so the two pages feel like one site.
- */
-const CatalogHeader = ({ cartCount }: CatalogHeaderProps) => {
+const CatalogHeader = () => {
+  const cartCount = useCartCount();
+  const toggleCart = useCartStore((state) => state.toggleCart);
   const reduce = useReducedMotion();
   const [justAdded, setJustAdded] = useState(false);
   const prevCount = useRef(cartCount);
@@ -40,9 +34,11 @@ const CatalogHeader = ({ cartCount }: CatalogHeaderProps) => {
         </Link>
 
         <div className="flex items-center gap-5 sm:gap-8">
-          <span
+          <button
+            type="button"
+            onClick={toggleCart}
             aria-label={`Cart, ${cartCount} item${cartCount === 1 ? "" : "s"}`}
-            className="flex items-center gap-2 text-holan-rose-deep"
+            className="flex cursor-pointer items-center gap-2 text-holan-rose-deep"
           >
             <span className="relative inline-flex">
               <motion.span
@@ -89,7 +85,7 @@ const CatalogHeader = ({ cartCount }: CatalogHeaderProps) => {
                 </motion.span>
               </AnimatePresence>
             </span>
-          </span>
+          </button>
 
           <Link
             to="/"

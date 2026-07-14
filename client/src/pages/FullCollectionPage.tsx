@@ -1,21 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import CatalogHeader from "@/components/layout/CatalogHeader";
 import Footer from "@/components/layout/Footer";
+import CartDrawer from "@/components/layout/CartDrawer";
 import CatalogBrowser from "@/components/sections/CatalogBrowser";
 import Reveal from "@/components/ui/Reveal";
 
 const FullCollectionPage = () => {
-  const [cart, setCart] = useState(0);
-  const addToCart = () => setCart((c) => c + 1);
-
-  // Land at the top when arriving from the "View Full Collection" link.
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#f5eae7_0%,#f1e1de_55%,#f3e7e4_100%)] bg-fixed text-left font-sans text-holan-ink selection:bg-holan-rose-soft selection:text-holan-ink">
-      <CatalogHeader cartCount={cart} />
+      <CatalogHeader />
 
       <main className="mx-auto max-w-300 px-[clamp(20px,6vw,88px)]">
         <Reveal>
@@ -34,11 +31,12 @@ const FullCollectionPage = () => {
         </Reveal>
 
         <Reveal>
-          <CatalogBrowser onAdd={addToCart} />
+          <CatalogBrowser />
         </Reveal>
       </main>
 
       <Footer />
+      <CartDrawer />
     </div>
   );
 };
