@@ -31,11 +31,13 @@ const CatalogBrowser = () => {
 
   const handleQuery = (value: string) => {
     setQuery(value);
+    setCategory("All");
     setVisible(PAGE_SIZE);
   };
 
   const handleCategory = (next: ScentCategory) => {
     setCategory(next);
+    setQuery("");
     setVisible(PAGE_SIZE);
   };
 
